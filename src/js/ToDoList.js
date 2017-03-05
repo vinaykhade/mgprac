@@ -2,7 +2,6 @@
 import React from 'react';
 import _ from 'underscore';
 import DatePicker from 'react-datepicker';
-import { DateField } from 'react-date-picker';
 import moment from 'moment';
 import TodoItems from './TodoItems';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -16,7 +15,7 @@ var ToDoList = React.createClass({
       items: [],
       noteValue: '',
       charLeft: 100,
-      dateValue: moment(),
+      dateValue: null,
       occurenceValue: 'everyday'
     };
   },
@@ -28,7 +27,8 @@ var ToDoList = React.createClass({
 
     itemArray.push({
       noteValue: noteValue,
-      occurenceValue: occurenceValue
+      occurenceValue: occurenceValue,
+      dateValue: dateValue
     });
 
     this.setState({
@@ -46,9 +46,14 @@ var ToDoList = React.createClass({
 
   },
 
-  handleDateChange(date) {
+  dateToString(date) {
+    let dateObject = date._d;
+    return (dateObject.getDate() + '-' + (dateObject.getMonth() + 1) + '-' + dateObject.getFullYear());
+  },
+
+  handleDateChange(e) {
     this.setState({
-      dateValue: date
+      dateValue: e
     })
   },
 
@@ -73,7 +78,7 @@ var ToDoList = React.createClass({
                 <label>{this.state.charLeft}</label>
 
                 <DatePicker selected={this.state.dateValue}
-                  onChange={this.handleDateChange} />
+                  onChange={this.handleDateChange} dateFormat="DD-MM-YYYY" />
 
                 <select value={this.state.occurenceValue} onChange={this.handleOccurence}>
                   <option value="everyday">Everyday</option>
@@ -85,7 +90,7 @@ var ToDoList = React.createClass({
                  name="submit" value="Submit" />
               </form>
 
-              <TodoItems data={this.state.items} />
+              <TodoItems data={this.state.items} dateConvertor={this.dateToString}/>
             </div>
           </div>
         </div>
