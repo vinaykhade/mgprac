@@ -1,9 +1,6 @@
 .titleBar
   background-color: $colorSemiRed !important
 
-.iconBtns
-  cursor: pointer
-
 .mainContainer
   width: 960px
   margin: 20px auto
@@ -23,94 +20,77 @@
   width: 557px
   margin: 0 auto
 
-.todoListItems
-  margin-bottom: 20px
+.listItems
+  margin-top: 20px
   li
     border-bottom: 1px solid $colorEEE
     padding: 10px 10px
-    .uncheckedLabel, .checkedLabel
-      height: 15px
-      width: 15px
-      background-color: $white
-      border: 2px solid $color666
-      border-radius: 4px
-      margin: 4px 0
-      cursor: pointer
-    .checkedLabel
-      position: relative
-      &::after
-        content: ''
-        width: 9px
-        height: 4px
-        position: absolute
-        top: 20%
-        left: 18%
-        border: 2px solid $black
-        border-top: none
-        border-right: none
-        background: transparent
-        opacity: 1
-        transform: rotate(-45deg)
-    .editInputBox
-      input, span
-        display: inline-block
-        vertical-align: middle
-      input
-        padding: 3px 10px
-        margin: 2px 15px
-        width: 410px
-        border: 1px solid $colorEEE
-    .listName
-      font-size: 14px
-      line-height: 16px
-      color: $color333
-      margin: 5px 0 5px 15px
-      width: 450px
-    .pull-right
-      color: blue
+    p, span
+      color: $color666
+      font-size: 12px
+      line-height: 14px
+      margin-bottom: 5px
+    span
+      display: block
+      &:nth-child(2)
+        text-transform: capitalize
     &:nth-child(1)
       border-top: 1px solid $colorEEE
 
 .taskForm
-  textarea, .addBtn
+  textarea, .inputLabel, span,
+  .react-datepicker__input-container, select
     display: block
   textarea
-    border-color: $colorEEE
+    border-color: $colorAAA
     background-color: $white
     padding: 10px 10px 0
     width: 536px
-    margin-bottom: 10px
+    margin-bottom: 5px
 
-.addTaskLink
-  padding: 0 0 0 7px
-  opacity: 0.7
-  cursor: pointer
-  span
-    display: inline-block
-    vertical-align: middle
-  .addTextLink
+  .inputLabel
+    font-size: 14px
+    line-height: 16px
+    color: $colorSemiRed
+    margin-bottom: 5px
+
+  .charLeft
     font-size: 12px
     line-height: 14px
-    font-weight: 600
-    margin-left: 20px
-    color: $colorDeepOrange
-    &:hover
-      text-decoration: underline
-  &:hover
-    opacity: 1
-.taskInputBox
-  button
-    background-color: $colorDeepOrange !important
-    span
-      text-transform: capitalize !important
-      font-size: 12px
-      font-weight: bold
-  .cancelLink
-    font-size: 12px
-    line-height: 14px
-    font-weight: lighter
     color: $color666
+    margin-bottom: 20px
+
+  .react-datepicker__input-container
+    margin-bottom: 20px
+    input
+      height: 30px
+      padding-left: 10px
+
+  select
+    outline: none
+    position: relative
     cursor: pointer
-    margin-left: 15px
-    &:hover
-      text-decoration: underline
+    width: 188px
+    height: 30px
+    font-size: 14px
+    border: 1px solid $colorAAA
+    padding-left: 10px
+    overflow: hidden
+    white-space: pre-wrap
+    background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png) no-repeat right $white
+    -webkit-appearance: none
+    background-position-x: 160px
+    text-align: left
+    margin-bottom: 20px
+    option
+      padding: 2px 0 2px 13px
+
+  .btn
+    background-color: $colorDeepOrange
+    border: none
+    color: $white
+    font-size: 14px
+    line-height: 16px
+    padding: 12px 20px
+    cursor: pointer
+    outline: none
